@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+:root {
+  /* Kalkwit: koel en licht groenig, zoals een gewitte technische ruimte. Geen crème. */
+  --background: #f2f4f1;
+  --surface: #ffffff;
+  --foreground: #142321;
+  --muted: #4b5b58;
+  --line: #dde3df;
+  /* Knoppen en links: teal-700 haalt 5,5:1 met wit; het logo-accent (#0d9488) is alleen voor grafisch gebruik. */
+  --brand: #0f766e;
+  --brand-strong: #115e59;
+  --brand-soft: #e3f1ee;
+  /* Petrol voor donkere vlakken in plaats van zwart, en signaalgeel alleen voor de koppelingen van de leiding. */
+  --petrol: #0b3d3a;
+  --petrol-soft: #145450;
+  --signal: #f5c542;
+  /* Bewegingscurves: sterk ease-out voor UI die verschijnt. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-petrol: var(--petrol);
+  --color-petrol-soft: var(--petrol-soft);
+  --color-signal: var(--signal);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Op een telefoon scrolt de pagina alleen op en neer. Een tabel die breder is schuift binnen zijn eigen kader. */
+  overflow-x: clip;
+}
+
+body {
+  /* Vangnet: niets mag de pagina breder maken dan het scherm. De oorzaken zelf lossen we in de componenten op. */
+  overflow-x: clip;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Geen vertraging bij tikken en een rustige, merkkleurige tikmarkering op telefoons. */
+a,
+button,
+input,
+select,
+textarea,
+label,
+summary {
+  touch-action: manipulation;
+}
+
+/* Telefoon: geen grijze/blauwe flits bij tikken (elke knop heeft zelf een ingedrukte staat), geen tekstvergroting bij kantelen. */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* iPhone zoomt in op invoervelden kleiner dan 16px en zoomt niet terug; op aanraakschermen dus altijd 16px. */
+@media (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Lang indrukken op een knop selecteert de tekst niet en opent geen menu. Gewone tekst blijft selecteerbaar. */
+button,
+[role="button"],
+summary {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+button:not(:disabled),
+[role="button"],
+summary,
+select {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 220ms var(--ease-out) both;
+}
+
+/* Staven in de omzetgrafiek komen kort op vanaf de basis; snel genoeg om direct te kunnen lezen. */
+@keyframes grow {
+  from {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+}
+.bar {
+  transform-origin: bottom;
+  animation: grow 250ms var(--ease-out) both;
+}
+
+/* Groen vinkje dat zichzelf tekent bij een ingeplande afspraak. */
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+.check-circle {
+  stroke-dasharray: 145;
+  stroke-dashoffset: 145;
+  animation: draw 350ms var(--ease-out) forwards;
+}
+.check-tick {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw 200ms 250ms var(--ease-out) forwards;
+}
+
+/* Koppen op de website: smal en zwaar, zoals de letters op een typeplaatje. */
+.display {
+  font-stretch: 72%;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.display-md {
+  font-stretch: 78%;
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+/* De koppelingen van de leiding verschijnen in de maat met de lijn die zich tekent (Pipeline.tsx). */
+.pipe-node {
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
+}
+[data-in="true"] .pipe-node {
+  opacity: 1;
+  transform: none;
+}
+
+/* Verschijnen zonder sprong: van iets boven of onder naar de plek, alleen transform en opacity. */
+.enter-down,
+.enter-up {
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+@starting-style {
+  .enter-down {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  .enter-up {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Uitklapbare inhoud (vragen, "Wat zit erin?"): de inhoud schuift rustig in beeld bij openen. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+details[open] > :not(summary) {
+  animation: reveal 200ms var(--ease-out);
+}
+
+/* Bevestiging van een aanvraag: cirkel en vinkje tekenen zich één keer. */
+.done-circle {
+  stroke-dasharray: 145;
+  stroke-dashoffset: 145;
+  animation: draw 350ms var(--ease-out) forwards;
+}
+.done-tick {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw 200ms 250ms var(--ease-out) forwards;
+}
+
+/* Minder beweging: geen verschuiving, wel een korte vervaging. */
+@media (prefers-reduced-motion: reduce) {
+  @starting-style {
+    .enter-down,
+    .enter-up {
+      transform: none;
+    }
+  }
+  details[open] > :not(summary) {
+    animation: none;
+  }
+  .done-circle,
+  .done-tick {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+/* Uitleg-ballon groeit vanuit het i-icoontje eronder. */
+.tip {
+  transform-origin: bottom center;
+  transition:
+    opacity 150ms var(--ease-out),
+    scale 150ms var(--ease-out);
+}
+@starting-style {
+  .tip {
+    opacity: 0;
+    scale: 0.97;
+  }
+}
+
+/*
+ * Doorschijnend materiaal voor balken (kop en onderbalk): de inhoud loopt eronder door,
+ * met een lichte rand waar het licht op het materiaal valt.
+ */
+.material {
+  /* Lichte vervaging: zware blur moet elk scrollframe opnieuw berekend worden en laat telefoons haperen. */
+  background: rgb(242 244 241 / 0.86);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+}
+.material-bottom {
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .material,
+  .material-bottom {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .material,
+  .material-bottom {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--foreground);
+  }
+}
