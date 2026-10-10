@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Werkly merkidentiteit</title>
+<style>
+  :root { --ink:#0B1220; --teal:#0D9488; --signal:#2DD4BF; --slate:#475569; --mist:#F4F6F9; --line:#E2E8F0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color:var(--ink); background:#fff; line-height:1.5; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header.top { padding: 28px 0; border-bottom: 1px solid var(--line); }
+  header.top .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; color:var(--slate); font-size:14px; }
+  header.top img { height: 28px; }
+  section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  section.alt { background: var(--mist); }
+  section.dark { background: var(--ink); color:#fff; border-bottom: 0; }
+  h2 { font-size: 15px; font-weight: 600; color: var(--slate); margin: 0 0 32px; letter-spacing: .01em; }
+  section.dark h2 { color:#94A3B8; }
+  .hero { padding: 120px 0 96px; }
+  .hero img { width: min(640px, 100%); display:block; }
+  .hero p { max-width: 520px; color: var(--slate); margin: 40px 0 0; font-size: 18px; }
+  .grid { display:grid; gap: 24px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .g2,.g3 { grid-template-columns: 1fr 1fr; } .hero { padding: 64px 0; } }
+  @media (max-width: 480px) { .g2,.g3 { grid-template-columns: 1fr; } }
+  .card { border-radius: 16px; padding: 40px 28px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; min-height: 220px; }
+  .card.white { background:#fff; border:1px solid var(--line); }
+  .card.mist { background: var(--mist); }
+  .card.ink { background: var(--ink); }
+  .card.teal { background: var(--teal); }
+  .card small { color: var(--slate); font-size: 13px; }
+  .card.ink small, .card.teal small { color:#CBD5E1; }
+  .card img.logo { width: 100%; max-width: 300px; }
+  .card img.sym { height: 72px; }
+  .sizes { display:flex; align-items:flex-end; gap: 36px; flex-wrap:wrap; }
+  .sizes figure { margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .sizes figcaption { font-size:12px; color:var(--slate); }
+  section.dark .sizes figcaption { color:#94A3B8; }
+  .tab { display:flex; align-items:center; gap:10px; background:#E2E8F0; border-radius:10px 10px 0 0; padding:8px 14px; width: 260px; font-size:13px; }
+  .tab img { width:16px; height:16px; }
+  .swatches { display:grid; grid-template-columns: repeat(5, 1fr); border-radius: 16px; overflow: hidden; border:1px solid var(--line); }
+  @media (max-width: 760px) { .swatches { grid-template-columns: 1fr 1fr; } }
+  .sw { padding: 72px 18px 18px; font-size: 13px; }
+  .sw b { display:block; font-size: 15px; }
+  .type-sample { font-size: 56px; line-height:1.1; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 24px; }
+  .note { max-width: 640px; color: var(--slate); }
+  .row { display:flex; gap: 24px; flex-wrap:wrap; align-items:center; }
+  .clear { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items:center; }
+  @media (max-width: 760px) { .clear { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <img src="werkly-logo.svg" alt="Werkly">
+  <span>Merkidentiteit, versie 1</span>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <img src="werkly-logo.svg" alt="Werkly, primair horizontaal logo">
+  <p>Werkly brengt het werk van aanvraag tot opdracht in één werkstroom. Het merk is rustig, precies en bedoeld om te blijven.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Het idee</h2>
+  <div class="clear">
+    <div class="card mist"><img class="sym" style="height:150px" src="werkly-symbol.svg" alt="Werkly symbool"></div>
+    <p class="note" style="font-size:18px;color:var(--ink)">Twee V-vormen schuiven in elkaar. Waar ze elkaar kruisen ontstaat een ruit: twee stappen die samenkomen in één werkstroom. Eén vorm, één accent. Het symbool zegt niets over een branche en hoeft niet uitgelegd te worden om te werken.</p>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Onderdelen</h2>
+  <div class="grid g3">
+    <div class="card white"><img class="logo" src="werkly-logo.svg" alt="Primair logo"><small>Primair logo, horizontaal</small></div>
+    <div class="card white"><img class="sym" src="werkly-symbol.svg" alt="Symbool"><small>Symbool</small></div>
+    <div class="card white"><img class="logo" src="werkly-wordmark.svg" alt="Woordmerk" style="max-width:220px"><small>Woordmerk</small></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Versies</h2>
+  <div class="grid g2">
+    <div class="card white"><img class="logo" src="werkly-logo.svg" alt="Kleur op licht"><small>Kleur, licht</small></div>
+    <div class="card ink"><img class="logo" src="werkly-logo-inverse.svg" alt="Kleur op donker"><small>Kleur, donker</small></div>
+    <div class="card white"><img class="logo" src="werkly-logo-black.svg" alt="Zwart"><small>Zwart (monochroom)</small></div>
+    <div class="card ink"><img class="logo" src="werkly-logo-white.svg" alt="Wit"><small>Wit (monochroom)</small></div>
+    <div class="card teal"><img class="logo" src="werkly-logo-white.svg" alt="Wit op teal"><small>Wit op accentkleur</small></div>
+    <div class="card mist"><img class="logo" src="werkly-logo-black.svg" alt="Zwart op lichtgrijs"><small>Zwart op lichtgrijs</small></div>
+  </div>
+  <p class="note" style="margin-top:24px">In de monochrome versies blijft de ruit open als negatieve ruimte, zodat het merk ook zonder kleur herkenbaar blijft. Er is nergens een verloop nodig.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Favicon en app-icoon</h2>
+  <div class="row" style="gap:48px;align-items:flex-start">
+    <div>
+      <div class="tab"><img src="favicon.svg" alt=""><span>werkly.nl, Aanvragen</span></div>
+      <div style="background:#fff;border:1px solid var(--line);height:56px;width:260px;border-radius:0 0 10px 10px"></div>
+      <p class="note" style="margin-top:12px;font-size:13px">Browsertabblad</p>
+    </div>
+    <div class="row">
+      <img src="app-icon.svg" alt="App-icoon donker" style="width:128px;height:128px;border-radius:28px">
+      <img src="app-icon-light.svg" alt="App-icoon licht" style="width:128px;height:128px;border-radius:28px;border:1px solid var(--line)">
+      <img src="app-icon.svg" alt="App-icoon klein" style="width:60px;height:60px;border-radius:14px">
+    </div>
+  </div>
+  <p class="note" style="margin-top:24px">Het icoon heeft dikkere armen dan het symbool, zodat het op 16 pixels niet dichtloopt.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Kleine formaten, op ware grootte</h2>
+  <div class="sizes">
+    <figure><img src="favicon.svg" width="16" height="16" alt="16 pixels"><figcaption>16</figcaption></figure>
+    <figure><img src="favicon.svg" width="24" height="24" alt="24 pixels"><figcaption>24</figcaption></figure>
+    <figure><img src="favicon.svg" width="32" height="32" alt="32 pixels"><figcaption>32</figcaption></figure>
+    <figure><img src="favicon.svg" width="48" height="48" alt="48 pixels"><figcaption>48</figcaption></figure>
+    <figure><img src="favicon.svg" width="64" height="64" alt="64 pixels"><figcaption>64</figcaption></figure>
+    <figure><img src="werkly-symbol.svg" height="16" alt="Symbool op 16 pixels hoog"><figcaption>symbool 16 hoog</figcaption></figure>
+    <figure><img src="werkly-logo.svg" height="20" alt="Logo op 20 pixels hoog"><figcaption>logo 20 hoog</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+  <h2>Op donker</h2>
+  <img src="werkly-logo-inverse.svg" alt="Werkly op donker" style="width:min(520px,100%);display:block">
+  <div class="sizes" style="margin-top:56px">
+    <figure><img src="favicon.svg" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
+    <figure><img src="favicon.svg" width="32" height="32" alt=""><figcaption>32</figcaption></figure>
+    <figure><img src="werkly-symbol-inverse.svg" height="40" alt=""><figcaption>symbool</figcaption></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Kleur</h2>
+  <div class="swatches">
+    <div class="sw" style="background:#0B1220;color:#fff"><b>Inkt</b>#0B1220<br>Tekst, logo, donkere vlakken</div>
+    <div class="sw" style="background:#0D9488;color:#fff"><b>Werkstroom</b>#0D9488<br>Accent op licht</div>
+    <div class="sw" style="background:#2DD4BF;color:#0B1220"><b>Signaal</b>#2DD4BF<br>Accent op donker</div>
+    <div class="sw" style="background:#475569;color:#fff"><b>Leisteen</b>#475569<br>Secundaire tekst</div>
+    <div class="sw" style="background:#F4F6F9;color:#0B1220"><b>Mist</b>#F4F6F9<br>Achtergrond</div>
+  </div>
+  <p class="note" style="margin-top:24px">Eén accentkleur, bewust spaarzaam. Teal is gekozen boven blauw omdat het minder op een bank of verzekeraar lijkt en goed leesbaar blijft op donker.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Typografie</h2>
+  <p class="type-sample">Van aanvraag naar opdracht.</p>
+  <p class="note">Het woordmerk is gebaseerd op <b>Geist</b> (SIL Open Font License), licht verzwaard tot ongeveer semibold. Geist is ook het lettertype van de app, dus merk en product spreken dezelfde taal. Voor lopende tekst gebruiken we Geist Regular met een regelhoogte van 1,5.</p>
+  <p class="note"><b>Nog niet gedaan:</b> een eigen aanpassing aan één letter. Daarmee wordt het woordmerk echt van Werkly. Dat is werk voor een letterontwerper en hoort bij de definitieve versie.</p>
+</div></section>
+
+</body>
+</html>

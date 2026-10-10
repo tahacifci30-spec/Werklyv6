@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  # Next.js schrijft zijn uitvoer naar .next. Niet de hoofdmap gebruiken: de Netlify-plug-in weigert dat.
+  publish = ".next"
+
+[build.environment]
+  # Next.js 16 vraagt minimaal Node 20.9
+  NODE_VERSION = "22"
+
+# Zonder deze plug-in maakt Netlify geen serverfunctie en geeft elk adres een 404.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
